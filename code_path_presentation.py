@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 # Set Page Config
 st.set_page_config(
@@ -109,7 +110,11 @@ elif choice == "⚖️ Pros & Cons":
 # Benefits for Architects Page
 elif choice == "🚀 Benefits for Architects":
     st.title("🚀 Benefits of Coding for Architects")
-    st.markdown("Learning to code can have a significant impact on an architect's career and work efficiency.")
+    st.markdown("""
+        Learning to code can have a significant impact on an architect's career and work efficiency.
+        Let's explore how each benefit can be visualized with data to understand its impact better.
+        Use the checkboxes to see specific charts related to each benefit.
+    """)
 
     benefits = [
         "Automate repetitive tasks, saving time and effort.",
@@ -157,15 +162,17 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_title("Impact of Data-Driven Analysis")
                 st.pyplot(fig)
             elif benefit == "Create custom tools for architectural workflows.":
-                st.markdown("**Custom Tool Adoption**")
-                tool_data = pd.DataFrame({
-                    "Tool Type": ["Standard Tools", "Custom Tools"],
-                    "Adoption Rate": [70, 95]
-                })
+                st.markdown("**Adoption of Custom Tools Over Time**")
+                years = np.arange(2018, 2024)
+                adoption_rates = [30, 45, 60, 70, 80, 90]
                 fig, ax = plt.subplots()
-                ax.bar(tool_data["Tool Type"], tool_data["Adoption Rate"], color=[arcadis_orange, arcadis_black])
+                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
+                ax.set_xlabel("Year")
                 ax.set_ylabel("Adoption Rate (%)")
-                ax.set_title("Adoption of Custom Tools in Workflows")
+                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+                ax.annotate('Significant Growth', xy=(2022, 80), xytext=(2020, 85),
+                            arrowprops=dict(facecolor='black', shrink=0.05))
                 st.pyplot(fig)
             elif benefit == "Open doors to specialized and well-paying job roles.":
                 st.markdown("**Salary Comparison**")
@@ -212,7 +219,13 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_title("Skill Set Distinction Levels")
                 st.pyplot(fig)
 
-    st.markdown("**Sources:** Data based on industry reports and surveys.")
+    st.markdown("""
+        **Next Steps:**
+        - **Data Customization:** Adjust the data points and labels in these charts to best fit the specific context of your projects or industry insights.
+        - **Interactive Exploration:** Use the checkboxes to dynamically engage and illustrate the benefits to your audience, allowing them to see the potential impact of coding skills in architecture.
+        
+        These visualizations are a starting point for understanding how coding skills can transform architectural workflows and career paths.
+    """)
 
 # New Section: Coding Path Insights
 elif choice == "✅ Coding Path Insights":
