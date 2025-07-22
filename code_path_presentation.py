@@ -145,6 +145,28 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_ylabel("Efficiency (%)")
                 ax.set_title("Impact of Automation on Efficiency")
                 st.pyplot(fig)
+            elif benefit == "Analyze and manipulate data to inform design decisions.":
+                st.markdown("**Data Analysis Impact**")
+                data_analysis = pd.DataFrame({
+                    "Method": ["Traditional Analysis", "Data-Driven Analysis"],
+                    "Impact Score": [60, 90]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(data_analysis["Method"], data_analysis["Impact Score"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Impact Score")
+                ax.set_title("Impact of Data-Driven Analysis")
+                st.pyplot(fig)
+            elif benefit == "Create custom tools for architectural workflows.":
+                st.markdown("**Custom Tool Adoption**")
+                tool_data = pd.DataFrame({
+                    "Tool Type": ["Standard Tools", "Custom Tools"],
+                    "Adoption Rate": [70, 95]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(tool_data["Tool Type"], tool_data["Adoption Rate"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Adoption Rate (%)")
+                ax.set_title("Adoption of Custom Tools in Workflows")
+                st.pyplot(fig)
             elif benefit == "Open doors to specialized and well-paying job roles.":
                 st.markdown("**Salary Comparison**")
                 salary_data = pd.DataFrame({
@@ -156,7 +178,39 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_ylabel("Average Salary (USD)")
                 ax.set_title("Salary Comparison")
                 st.pyplot(fig)
-            # Add additional interactive elements for other benefits as needed.
+            elif benefit == "Improve project efficiency and collaboration with other disciplines.":
+                st.markdown("**Collaboration Efficiency**")
+                collab_data = pd.DataFrame({
+                    "Collaboration Type": ["Traditional", "Tech-Enhanced"],
+                    "Efficiency": [65, 88]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(collab_data["Collaboration Type"], collab_data["Efficiency"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Efficiency (%)")
+                ax.set_title("Efficiency of Tech-Enhanced Collaboration")
+                st.pyplot(fig)
+            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
+                st.markdown("**Industry Adaptability**")
+                adaptability_data = pd.DataFrame({
+                    "Adaptability Level": ["Standard", "Tech-Driven"],
+                    "Score": [70, 92]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(adaptability_data["Adaptability Level"], adaptability_data["Score"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Adaptability Score")
+                ax.set_title("Industry Adaptability Levels")
+                st.pyplot(fig)
+            elif benefit == "Develop a unique skill set that sets you apart from peers.":
+                st.markdown("**Skill Set Distinction**")
+                skill_data = pd.DataFrame({
+                    "Skill Level": ["Standard", "Advanced"],
+                    "Distinction Score": [75, 95]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(skill_data["Skill Level"], skill_data["Distinction Score"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Distinction Score")
+                ax.set_title("Skill Set Distinction Levels")
+                st.pyplot(fig)
 
     st.markdown("**Sources:** Data based on industry reports and surveys.")
 
