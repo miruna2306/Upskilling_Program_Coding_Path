@@ -142,11 +142,43 @@ elif choice == "🚀 Benefits for Architects":
         "Develop a unique skill set that sets you apart from peers."
     ]
 
-    # Visualize each benefit with a chart or graphic
     for benefit in benefits:
         if st.checkbox(benefit):
-            # Add visualizations or graphics for each benefit
-            if benefit == "Stay ahead of the curve in a tech-driven industry.":
+            if benefit == "Automate repetitive tasks, saving time and effort.":
+                st.markdown("**Impact of Automation on Efficiency**")
+                data = pd.DataFrame({
+                    "Scenario": ["Manual Workflow", "Automated Workflow"],
+                    "Efficiency": [50, 85]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Efficiency (%)")
+                ax.set_title("Impact of Automation on Efficiency")
+                st.pyplot(fig)
+
+            elif benefit == "Analyze and manipulate data to inform design decisions.":
+                st.markdown("**Accuracy Increase with Data Analysis**")
+                labels = ["Traditional Analysis", "Data-Driven Analysis"]
+                sizes = [30, 70]
+                fig, ax = plt.subplots()
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
+                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                ax.set_title("Accuracy Increase with Data Analysis")
+                st.pyplot(fig)
+
+            elif benefit == "Create custom tools for architectural workflows.":
+                st.markdown("**Adoption of Custom Tools Over Time**")
+                years = np.arange(2018, 2024)
+                adoption_rates = [30, 45, 60, 70, 80, 90]
+                fig, ax = plt.subplots()
+                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
+                ax.set_xlabel("Year")
+                ax.set_ylabel("Adoption Rate (%)")
+                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+                st.pyplot(fig)
+
+            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
                 st.markdown("**Relevance Growth of Architects with Coding Skills**")
                 years = np.arange(2020, 2030)
                 relevance_coding = [50, 60, 70, 80, 90, 95, 97, 98, 99, 100]
@@ -159,6 +191,30 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_title("Relevance Growth: Coding Skills vs. Basic BIM Skills")
                 ax.legend()
                 ax.grid(True)
+                st.pyplot(fig)
+
+            elif benefit == "Open doors to specialized and well-paying job roles.":
+                st.markdown("**Salary Comparison**")
+                salary_data = pd.DataFrame({
+                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
+                    "Average Salary": [55000, 75000]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Average Salary (USD)")
+                ax.set_title("Salary Comparison")
+                st.pyplot(fig)
+
+            elif benefit == "Develop a unique skill set that sets you apart from peers.":
+                st.markdown("**Skill Set Distinction**")
+                skill_data = pd.DataFrame({
+                    "Skill Level": ["Standard", "Advanced"],
+                    "Distinction Score": [75, 95]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(skill_data["Skill Level"], skill_data["Distinction Score"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Distinction Score")
+                ax.set_title("Skill Set Distinction Levels")
                 st.pyplot(fig)
 
 # Coding Path Insights Page
