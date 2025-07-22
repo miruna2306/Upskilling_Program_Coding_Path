@@ -24,6 +24,7 @@ pages = [
     "⚖️ Pros & Cons",
     "🚀 Benefits for Architects",
     "✅ Coding Path Insights"
+    "🙏 Thank You"
 ]
 choice = st.sidebar.radio("Go to", pages)
 
@@ -142,8 +143,7 @@ elif choice == "🚀 Benefits for Architects":
         "Create custom tools for architectural workflows.",
         "Open doors to specialized and well-paying job roles.",
         "Improve project efficiency and collaboration with other disciplines.",
-        "Stay ahead of the curve in a tech-driven industry.",
-        "Develop a unique skill set that sets you apart from peers."
+        "Stay ahead of the curve in a tech-driven industry."
     ]
 
     for benefit in benefits:
@@ -180,6 +180,17 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_ylabel("Adoption Rate (%)")
                 ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
                 ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+                st.pyplot(fig)
+                
+            elif benefit == "Improve project efficiency and collaboration with other disciplines.":
+                st.markdown("**Success Rate of Projects with Code Collaboration**")
+                labels = ["Projects with Code Sharing", "Projects without Code Sharing"]
+                sizes = [75, 25]  # These are example values; adjust based on your context
+                colors = [arcadis_orange, arcadis_black]
+                fig, ax = plt.subplots()
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors)
+                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                ax.set_title("Success Rate: Code Sharing vs. No Code Sharing")
                 st.pyplot(fig)
 
             elif benefit == "Stay ahead of the curve in a tech-driven industry.":
@@ -222,14 +233,14 @@ elif choice == "✅ Coding Path Insights":
         "Focuses on the basics of code writing.",
         "Offers an understanding of virtual environments, essential for managing dependencies across projects.",
         "Covers integration with architectural design tools like Revit or Dynamo.",
-        "The course introduces tools to enhance productivity by streamlining workflows and reducing repetition.",
+        "Introduces tools to enhance productivity by streamlining workflows and reducing repetition.",
         "Teaches how to leverage existing packages and libraries, optimizing development time and effort.",
         "Prepares you for collaborative coding environments, a critical skill in modern tech-driven fields.",
-        "Doesn't fully automate architectural workflows end-to-end.",
+        "Automates architectural workflows end-to-end.",
         "Emphasizes version control, which is crucial for collaborative work and maintaining project history.",
         "Teaches best practices for coding workflows.",
         "Offers insights into setting up virtual environments for projects.",
-        "Covers specific applications of coding for architectural analysis.",
+        "Introduces modular coding techniques, enabling architects to build scalable solutions for complex projects.",
         "Highlights the importance of clean code, improving readability and facilitating easier knowledge transfer.",
         "Focus on 3D modeling and simulation techniques specific to architectural design.",
         "Equips you with the skills to develop user-friendly web applications, promoting accessibility and stakeholder interaction."
@@ -244,9 +255,35 @@ elif choice == "✅ Coding Path Insights":
     score = round((total_checked / total_insights) * 100, 2)
 
     st.markdown(f"### Final Relevance Score: {score}%")
-    if score >= 75:
+    if score >= 70:
         st.success("The Coding Path program is highly relevant to an architect with minimal coding knowledge!")
     elif score >= 50:
         st.warning("The Coding Path program is somewhat relevant, but it has room for improvement.")
     else:
         st.error("The Coding Path program may not meet the needs for an architect with minimal coding knowledge. Consider additional learning resources.")
+
+# Final Section: Thank You Page
+elif choice == "🙏 Thank You":
+    st.title("Thank You!")
+    st.markdown("### We appreciate your time and attention during this presentation.")
+    st.markdown(
+        """
+        The Coding Path empowers architects and professionals across disciplines to collaborate effectively 
+        and leverage coding skills for innovation. If you are thinking to apply for the Code Path of the next
+        Upskilling Program Session, I suggest you to start learning some code fundamentals, so you could get 
+        the best out of the Upskilling Program learning experience.
+        
+        For further information and resources, please visit the **Code Path Companion**:
+        [Code Path Companion](https://arcadis.com/coding-path-companion)
+        """
+    )
+    st.image(
+       "coding_01.jpg", caption="Uploaded Image", use_container_width=True
+    )
+       )
+    st.image(
+       "coding_02.jpg", caption="Uploaded Image", use_container_width=True
+    )
+    
+    st.markdown("---")
+    st.markdown("### Stay Curious, Keep Innovating 🚀")
