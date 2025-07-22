@@ -81,7 +81,6 @@ elif choice == "⚖️ Pros & Cons":
     st.title("⚖️ Pros & Cons")
     st.markdown("Below are the pros and cons of the Coding Path program:")
 
-    st.subheader("Pros")
     pros = [
         "Gain foundational knowledge of Python and coding.",
         "Learn how to manipulate and visualize data effectively.",
@@ -91,10 +90,7 @@ elif choice == "⚖️ Pros & Cons":
         "Enhance your problem-solving and logical thinking.",
         "Experience an interactive and hands-on learning approach."
     ]
-    st.slider("Scroll through the pros:", 0, len(pros)-1, 0, key="pros_slider")
-    st.write(pros[st.session_state.pros_slider])
 
-    st.subheader("Cons")
     cons = [
         "The learning curve may feel steep for beginners.",
         "Some topics may not directly apply to daily architectural work.",
@@ -104,8 +100,16 @@ elif choice == "⚖️ Pros & Cons":
         "May require additional effort to apply coding to architecture.",
         "Not tailored specifically for architects' workflows."
     ]
-    st.slider("Scroll through the cons:", 0, len(cons)-1, 0, key="cons_slider")
-    st.write(cons[st.session_state.cons_slider])
+
+    for i, pro in enumerate(pros):
+        st.subheader(f"Pro {i+1}")
+        st.write(pro)
+        st.slider("Rate this Pro", 0, 10, 5, key=f"pro_slider_{i}")
+
+    for i, con in enumerate(cons):
+        st.subheader(f"Con {i+1}")
+        st.write(con)
+        st.slider("Rate this Con", 0, 10, 5, key=f"con_slider_{i}")
 
 # Benefits for Architects Page
 elif choice == "🚀 Benefits for Architects":
@@ -132,7 +136,7 @@ elif choice == "🚀 Benefits for Architects":
         "Create custom tools for architectural workflows.": "Tool customization potential:",
         "Open doors to specialized and well-paying job roles.": "Career potential graph:",
         "Improve project efficiency and collaboration with other disciplines.": "Collaboration benefits:",
-        "Stay ahead of the curve in a tech-driven industry.": "Industry trends:",
+        "Stay ahead of the curve in a tech-driven industry.": "Industry competitiveness:",
         "Develop a unique skill set that sets you apart from peers.": "Skill set comparison:"
     }
 
@@ -152,14 +156,12 @@ elif choice == "🚀 Benefits for Architects":
                 st.pyplot(fig)
             elif benefit == "Analyze and manipulate data to inform design decisions.":
                 st.markdown("**Data Analysis Impact**")
-                data_analysis = pd.DataFrame({
-                    "Method": ["Traditional Analysis", "Data-Driven Analysis"],
-                    "Impact Score": [60, 90]
-                })
+                labels = ["Traditional Analysis", "Data-Driven Analysis"]
+                sizes = [30, 70]
                 fig, ax = plt.subplots()
-                ax.bar(data_analysis["Method"], data_analysis["Impact Score"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Impact Score")
-                ax.set_title("Impact of Data-Driven Analysis")
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
+                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                ax.set_title("Accuracy Increase with Data Analysis")
                 st.pyplot(fig)
             elif benefit == "Create custom tools for architectural workflows.":
                 st.markdown("**Adoption of Custom Tools Over Time**")
@@ -197,16 +199,8 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_title("Efficiency of Tech-Enhanced Collaboration")
                 st.pyplot(fig)
             elif benefit == "Stay ahead of the curve in a tech-driven industry.":
-                st.markdown("**Industry Adaptability**")
-                adaptability_data = pd.DataFrame({
-                    "Adaptability Level": ["Standard", "Tech-Driven"],
-                    "Score": [70, 92]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(adaptability_data["Adaptability Level"], adaptability_data["Score"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Adaptability Score")
-                ax.set_title("Industry Adaptability Levels")
-                st.pyplot(fig)
+                st.markdown("**Industry Competitiveness**")
+                st.markdown("Imagine a graphic here illustrating how tech skills make architects more relevant. For example, a graphic showing an architect upgrading from basic BIM skills to advanced tech skills, showcasing tools like VR/AR, generative design, and data analytics.")
             elif benefit == "Develop a unique skill set that sets you apart from peers.":
                 st.markdown("**Skill Set Distinction**")
                 skill_data = pd.DataFrame({
