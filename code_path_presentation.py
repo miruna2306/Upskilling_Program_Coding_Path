@@ -48,33 +48,56 @@ if choice == "🏠 Intro":
     )
 
 # Modules Overview Page
-elif choice == "📚 Modules Overview":
-    st.title("📚 Modules Overview")
-    st.markdown("Here’s a breakdown of the modules covered in the Coding Path program:")
+elif section == "Modules Breakdown":
+    st.header("Modules Breakdown")
+    st.write(
+        "The program consists of five modules, each focusing on a specific aspect of coding and collaboration:"
+    )
+    
+    with st.expander("Module 1: Coding Fundamentals"):
+        st.write(
+            """
+            - Set up your coding environment (Python, VSCode, Git, GitHub).
+            - Learn the basics of coding and how tools interact.
+            - Gain foundational productivity skills for coding success.
+            """
+        )
+        
+    with st.expander("Module 2: Version Control"):
+        st.write(
+            """
+            - Learn Git and GitHub to manage and collaborate on code.
+            - Understand branching, merging, and pull requests.
+            - Enhance teamwork and code tracking.
+            """
+        )
 
-    modules = {
-        "Module 1: Introduction to Programming": [
-            "Learn the basics of Python.",
-            "Understand variables, loops, and functions.",
-            "Introduction to coding platforms like VS Code."
-        ],
-        "Module 2: Data Handling": [
-            "Work with data structures like lists, dictionaries, and dataframes.",
-            "Introduction to libraries like Pandas and Numpy.",
-            "Learn how to clean and manipulate data."
-        ],
-        "Module 3: Visualization": [
-            "Create charts and graphs using Matplotlib.",
-            "Understand how to present data visually.",
-            "Learn the principles of effective data storytelling."
-        ],
-        "Module 4: Collaboration & Environments": [
-            "Work with Git and GitHub for version control.",
-            "Understand virtual environments and package management.",
-            "Collaborate effectively on coding projects."
-        ]
-    }
+    with st.expander("Module 3: Packages and Environments"):
+        st.write(
+            """
+            - Explore Python packages to simplify workflows.
+            - Learn virtual environments for dependency management.
+            - Leverage reusable tools like Pandas and Matplotlib.
+            """
+        )
 
+    with st.expander("Module 4: Guidelines and Guardrails"):
+        st.write(
+            """
+            - Write clean, maintainable, and scalable code.
+            - Apply best practices for variable naming, formatting, and readability.
+            - Collaborate effectively through code reviews.
+            """
+        )
+
+    with st.expander("Module 5: Visuals and User Interaction"):
+        st.write(
+            """
+            - Build interactive web apps using Streamlit.
+            - Learn how to create user-friendly interfaces.
+            - Empower stakeholders to interact with outputs without coding.
+            """
+        )
     for module, points in modules.items():
         with st.expander(module):
             st.markdown("- " + "\n- ".join(points))
