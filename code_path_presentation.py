@@ -33,7 +33,7 @@ if choice == "🏠 Intro":
     st.subheader("Empowering Architects with Coding Skills")
     st.markdown("""
         Welcome to this interactive presentation! This app showcases the **Coding Path** from the Arcadis Upskilling Program.
-        
+
         In this presentation, you'll learn:
         - The structure and content of the program.
         - Pros and cons of taking the course.
@@ -102,22 +102,22 @@ elif choice == "⚖️ Pros & Cons":
     ]
 
     for i, pro in enumerate(pros):
-        st.subheader(f"Pro {i+1}")
+        st.subheader(f"Pro {i + 1}:")
         st.write(pro)
-        st.slider("Rate this Pro", 0, 10, 5, key=f"pro_slider_{i}")
+        st.slider(f"Rate this Pro", 0, 10, 5, key=f"pro_slider_{i}")
 
     for i, con in enumerate(cons):
-        st.subheader(f"Con {i+1}")
+        st.subheader(f"Con {i + 1}:")
         st.write(con)
-        st.slider("Rate this Con", 0, 10, 5, key=f"con_slider_{i}")
+        st.slider(f"Rate this Con", 0, 10, 5, key=f"con_slider_{i}")
 
 # Benefits for Architects Page
-elif choice == "🚀 Benefits for Architects":
+elif choice == "�� Benefits for Architects":
     st.title("🚀 Benefits of Coding for Architects")
     st.markdown("""
         Learning to code can have a significant impact on an architect's career and work efficiency.
         Let's explore how each benefit can be visualized with data to understand its impact better.
-        Use the checkboxes to see specific charts related to each benefit.
+        Use the checkboxes to see specific charts or graphics related to each benefit.
     """)
 
     benefits = [
@@ -136,103 +136,30 @@ elif choice == "🚀 Benefits for Architects":
         "Create custom tools for architectural workflows.": "Tool customization potential:",
         "Open doors to specialized and well-paying job roles.": "Career potential graph:",
         "Improve project efficiency and collaboration with other disciplines.": "Collaboration benefits:",
-        "Stay ahead of the curve in a tech-driven industry.": "Industry competitiveness:",
+        "Stay ahead of the curve in a tech-driven industry.": "Tech-savvy architects are leaders in the future:",
         "Develop a unique skill set that sets you apart from peers.": "Skill set comparison:"
     }
 
     for benefit, description in benefit_interactivity.items():
         if st.checkbox(benefit):
             st.markdown(description)
-            if benefit == "Automate repetitive tasks, saving time and effort.":
-                st.markdown("**Project Efficiency Before and After Automation**")
-                data = pd.DataFrame({
-                    "Scenario": ["Manual Workflow", "Automated Workflow"],
-                    "Efficiency": [50, 85]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Efficiency (%)")
-                ax.set_title("Impact of Automation on Efficiency")
-                st.pyplot(fig)
-            elif benefit == "Analyze and manipulate data to inform design decisions.":
-                st.markdown("**Data Analysis Impact**")
-                labels = ["Traditional Analysis", "Data-Driven Analysis"]
-                sizes = [30, 70]
-                fig, ax = plt.subplots()
-                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
-                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-                ax.set_title("Accuracy Increase with Data Analysis")
-                st.pyplot(fig)
-            elif benefit == "Create custom tools for architectural workflows.":
-                st.markdown("**Adoption of Custom Tools Over Time**")
-                years = np.arange(2018, 2024)
-                adoption_rates = [30, 45, 60, 70, 80, 90]
-                fig, ax = plt.subplots()
-                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
-                ax.set_xlabel("Year")
-                ax.set_ylabel("Adoption Rate (%)")
-                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
-                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-                ax.annotate('Significant Growth', xy=(2022, 80), xytext=(2020, 85),
-                            arrowprops=dict(facecolor='black', shrink=0.05))
-                st.pyplot(fig)
-            elif benefit == "Open doors to specialized and well-paying job roles.":
-                st.markdown("**Salary Comparison**")
-                salary_data = pd.DataFrame({
-                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
-                    "Average Salary": [55000, 75000]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Average Salary (USD)")
-                ax.set_title("Salary Comparison")
-                st.pyplot(fig)
-            elif benefit == "Improve project efficiency and collaboration with other disciplines.":
-                st.markdown("**Collaboration Efficiency**")
-                collab_data = pd.DataFrame({
-                    "Collaboration Type": ["Traditional", "Tech-Enhanced"],
-                    "Efficiency": [65, 88]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(collab_data["Collaboration Type"], collab_data["Efficiency"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Efficiency (%)")
-                ax.set_title("Efficiency of Tech-Enhanced Collaboration")
-                st.pyplot(fig)
-            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
-                st.markdown("**Industry Competitiveness**")
-                # Visualization with text-based graphic
+            if benefit == "Stay ahead of the curve in a tech-driven industry.":
                 st.markdown("""
-                    <div style='text-align: center;'>
-                        <img src='https://via.placeholder.com/300x150.png?text=Tech-Savvy+Architects+Lead+the+Future' alt='Graphic: Tech-Savvy Architects Lead the Future'>
-                        <p>Architects with <strong>advanced coding skills</strong> <span style='font-size: 24px;'>🔗</span> are more relevant in today's tech-driven industry compared to those with only basic BIM skills.</p>
-                    </div>
-                """, unsafe_allow_html=True)
-            elif benefit == "Develop a unique skill set that sets you apart from peers.":
-                st.markdown("**Skill Set Distinction**")
-                skill_data = pd.DataFrame({
-                    "Skill Level": ["Standard", "Advanced"],
-                    "Distinction Score": [75, 95]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(skill_data["Skill Level"], skill_data["Distinction Score"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Distinction Score")
-                ax.set_title("Skill Set Distinction Levels")
-                st.pyplot(fig)
+                    **Graphic: Architects with Coding Skills vs. Architects with Basic BIM Skills**
+                    - Architects with **coding skills** 🌟 are equipped to:
+                        - Automate workflows.
+                        - Use generative design tools.
+                        - Analyze and manipulate data.
+                    - Architects with **basic BIM skills** 🏗️ rely on predefined tools and workflows.
+                    
+                    _This graphic shows that coding-skilled architects are more adaptable and versatile in tech-driven environments._
+                """)
 
-    st.markdown("""
-        **Next Steps:**
-        - **Data Customization:** Adjust the data points and labels in these charts to best fit the specific context of your projects or industry insights.
-        - **Interactive Exploration:** Use the checkboxes to dynamically engage and illustrate the benefits to your audience, allowing them to see the potential impact of coding skills in architecture.
-        
-        These visualizations are a starting point for understanding how coding skills can transform architectural workflows and career paths.
-    """)
-
-# New Section: Coding Path Insights
+# Coding Path Insights Page
 elif choice == "✅ Coding Path Insights":
     st.title("✅ Coding Path Insights")
     st.markdown("""
-        This section provides a mixed set of statements about what the Coding Path program covers and what it may not. 
-        Use the checkboxes to indicate your agreement or disagreement based on your experience.
+        This section provides insights into the Coding Path program. Check the boxes that apply to your experience to evaluate the program's relevance.
     """)
 
     insights = [
@@ -248,5 +175,23 @@ elif choice == "✅ Coding Path Insights":
         "Offers insights into setting up virtual environments for projects.",
         "May not cover specific applications of coding for architectural analysis."
     ]
+
+    # Checkbox interaction
+    checkbox_states = []
     for point in insights:
-        st.checkbox(point, key=f"insight_{point}")
+        checked = st.checkbox(point, key=f"insight_{point}")
+        checkbox_states.append(checked)
+
+    # Calculate final score
+    total_checked = sum(checkbox_states)
+    total_insights = len(insights)
+    score = round((total_checked / total_insights) * 100, 2)
+
+    # Provide feedback based on score
+    st.markdown(f"### Final Relevance Score: {score}%")
+    if score >= 75:
+        st.success("The Coding Path program is highly relevant to your needs!")
+    elif score >= 50:
+        st.warning("The Coding Path program is somewhat relevant, but it has room for improvement.")
+    else:
+        st.error("The Coding Path program may not meet your needs. Consider additional learning resources.")
