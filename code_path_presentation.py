@@ -34,7 +34,7 @@ if choice == "🏠 Intro":
     st.markdown("""
         Welcome to this interactive presentation! This app showcases the **Coding Path** from the Arcadis Upskilling Program.
 
-        In this presentation, you'll learn:
+        In this presentation, you’ll learn:
         - The structure and content of the program.
         - Pros and cons of taking the course.
         - Benefits of coding for architects.
@@ -42,7 +42,10 @@ if choice == "🏠 Intro":
 
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Arcadis_Logo.svg/2560px-Arcadis_Logo.svg.png", width=400)
+    st.image(
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Arcadis_Logo.svg/2560px-Arcadis_Logo.svg.png",
+        width=400
+    )
 
 # Modules Overview Page
 elif choice == "📚 Modules Overview":
@@ -112,7 +115,7 @@ elif choice == "⚖️ Pros & Cons":
         st.slider(f"Rate this Con", 0, 10, 5, key=f"con_slider_{i}")
 
 # Benefits for Architects Page
-elif choice == "�� Benefits for Architects":
+elif choice == "🚀 Benefits for Architects":
     st.title("🚀 Benefits of Coding for Architects")
     st.markdown("""
         Learning to code can have a significant impact on an architect's career and work efficiency.
@@ -130,36 +133,86 @@ elif choice == "�� Benefits for Architects":
         "Develop a unique skill set that sets you apart from peers."
     ]
 
-    benefit_interactivity = {
-        "Automate repetitive tasks, saving time and effort.": "See how automation impacts efficiency:",
-        "Analyze and manipulate data to inform design decisions.": "Explore data insights:",
-        "Create custom tools for architectural workflows.": "Tool customization potential:",
-        "Open doors to specialized and well-paying job roles.": "Career potential graph:",
-        "Improve project efficiency and collaboration with other disciplines.": "Collaboration benefits:",
-        "Stay ahead of the curve in a tech-driven industry.": "Tech-savvy architects are leaders in the future:",
-        "Develop a unique skill set that sets you apart from peers.": "Skill set comparison:"
-    }
-
-    for benefit, description in benefit_interactivity.items():
+    for benefit in benefits:
         if st.checkbox(benefit):
-            st.markdown(description)
-            if benefit == "Stay ahead of the curve in a tech-driven industry.":
-                st.markdown("""
-                    **Graphic: Architects with Coding Skills vs. Architects with Basic BIM Skills**
-                    - Architects with **coding skills** 🌟 are equipped to:
-                        - Automate workflows.
-                        - Use generative design tools.
-                        - Analyze and manipulate data.
-                    - Architects with **basic BIM skills** 🏗️ rely on predefined tools and workflows.
-                    
-                    _This graphic shows that coding-skilled architects are more adaptable and versatile in tech-driven environments._
-                """)
+            if benefit == "Automate repetitive tasks, saving time and effort.":
+                st.markdown("**Impact of Automation on Efficiency**")
+                data = pd.DataFrame({
+                    "Scenario": ["Manual Workflow", "Automated Workflow"],
+                    "Efficiency": [50, 85]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Efficiency (%)")
+                ax.set_title("Impact of Automation on Efficiency")
+                st.pyplot(fig)
+
+            elif benefit == "Analyze and manipulate data to inform design decisions.":
+                st.markdown("**Accuracy Increase with Data Analysis**")
+                labels = ["Traditional Analysis", "Data-Driven Analysis"]
+                sizes = [30, 70]
+                fig, ax = plt.subplots()
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
+                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                ax.set_title("Accuracy Increase with Data Analysis")
+                st.pyplot(fig)
+
+            elif benefit == "Create custom tools for architectural workflows.":
+                st.markdown("**Adoption of Custom Tools Over Time**")
+                years = np.arange(2018, 2024)
+                adoption_rates = [30, 45, 60, 70, 80, 90]
+                fig, ax = plt.subplots()
+                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
+                ax.set_xlabel("Year")
+                ax.set_ylabel("Adoption Rate (%)")
+                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+                st.pyplot(fig)
+
+            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
+                st.markdown("**Relevance Growth of Architects with Coding Skills**")
+                years = np.arange(2020, 2030)
+                relevance_coding = [50, 60, 70, 80, 90, 95, 97, 98, 99, 100]
+                relevance_bim = [50, 55, 60, 62, 63, 64, 64, 64, 64, 64]
+                fig, ax = plt.subplots()
+                ax.plot(years, relevance_coding, label="Architects with Coding Skills", color=arcadis_orange, marker='o')
+                ax.plot(years, relevance_bim, label="Architects with Basic BIM Skills", color=arcadis_black, marker='x')
+                ax.set_xlabel("Year")
+                ax.set_ylabel("Relevance in Tech-Driven Industry (%)")
+                ax.set_title("Relevance Growth: Coding Skills vs. Basic BIM Skills")
+                ax.legend()
+                ax.grid(True)
+                st.pyplot(fig)
+
+            elif benefit == "Open doors to specialized and well-paying job roles.":
+                st.markdown("**Salary Comparison**")
+                salary_data = pd.DataFrame({
+                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
+                    "Average Salary": [55000, 75000]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Average Salary (USD)")
+                ax.set_title("Salary Comparison")
+                st.pyplot(fig)
+
+            elif benefit == "Develop a unique skill set that sets you apart from peers.":
+                st.markdown("**Skill Set Distinction**")
+                skill_data = pd.DataFrame({
+                    "Skill Level": ["Standard", "Advanced"],
+                    "Distinction Score": [75, 95]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(skill_data["Skill Level"], skill_data["Distinction Score"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Distinction Score")
+                ax.set_title("Skill Set Distinction Levels")
+                st.pyplot(fig)
 
 # Coding Path Insights Page
 elif choice == "✅ Coding Path Insights":
     st.title("✅ Coding Path Insights")
     st.markdown("""
-        This section provides insights into the Coding Path program. Check the boxes that apply to your experience to evaluate the program's relevance.
+        This section provides insights into the Coding Path program. Check the boxes that apply to your experience to evaluate the program’s relevance.
     """)
 
     insights = [
@@ -171,7 +224,7 @@ elif choice == "✅ Coding Path Insights":
         "Emphasizes collaboration using Git and GitHub.",
         "Lacks in-depth knowledge of advanced Python libraries (e.g., TensorFlow, PyTorch).",
         "Teaches best practices for coding workflows.",
-        "Doesn't fully automate architectural workflows end-to-end.",
+        "Doesn’t fully automate architectural workflows end-to-end.",
         "Offers insights into setting up virtual environments for projects.",
         "May not cover specific applications of coding for architectural analysis."
     ]
