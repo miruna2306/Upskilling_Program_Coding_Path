@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Define Arcadis colors
+# Define Arcadis brand colors
 arcadis_orange = "#FF6600"
 arcadis_black = "#000000"
 
@@ -32,20 +32,13 @@ if choice == "🏠 Overview":
     st.title("Citizen Development Code Path: Upskilling Program")
     st.subheader("Accelerating Innovation Through Collaboration")
     st.markdown("""
-           "Welcome to my interactive presentation! In this session, we’ll explore the modules, "
-    "skills, and applications of the Coding Path program, and how architects can leverage these "
-    "skills to enhance workflows."
+        Welcome to the interactive presentation! In this session, we’ll explore the modules, skills, 
+        and applications of the Coding Path program, and how architects can leverage these skills 
+        to enhance workflows.
 
-        """
         The Coding Path is part of the Citizen Development Upskilling Program at Arcadis. 
         It is designed to teach coding fundamentals, collaborative practices, and tools like GitHub, 
         VSCode, and Streamlit. The focus is on enhancing workflows and driving digital innovation.
-        """
-        In this presentation, you’ll learn:
-        - The structure and content of the program.
-        - Pros and cons of taking the course.
-        - Benefits of coding for architects.
-        - Insights into what the program covers and what it doesn’t.
 
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
@@ -55,59 +48,44 @@ if choice == "🏠 Overview":
     )
 
 # Modules Breakdown Page
-elif section == "Modules Breakdown":
+elif choice == "📚 Modules Breakdown":
     st.header("Modules Breakdown")
-    st.write(
-        "The program consists of five modules, each focusing on a specific aspect of coding and collaboration:"
-    )
+    st.write("The program consists of five modules, each focusing on a specific aspect of coding and collaboration:")
     
     with st.expander("Module 1: Coding Fundamentals"):
-        st.write(
-            """
+        st.write("""
             - Set up your coding environment (Python, VSCode, Git, GitHub).
             - Learn the basics of coding and how tools interact.
             - Gain foundational productivity skills for coding success.
-            """
-        )
-        
+        """)
+
     with st.expander("Module 2: Version Control"):
-        st.write(
-            """
+        st.write("""
             - Learn Git and GitHub to manage and collaborate on code.
             - Understand branching, merging, and pull requests.
             - Enhance teamwork and code tracking.
-            """
-        )
+        """)
 
     with st.expander("Module 3: Packages and Environments"):
-        st.write(
-            """
+        st.write("""
             - Explore Python packages to simplify workflows.
             - Learn virtual environments for dependency management.
             - Leverage reusable tools like Pandas and Matplotlib.
-            """
-        )
+        """)
 
     with st.expander("Module 4: Guidelines and Guardrails"):
-        st.write(
-            """
+        st.write("""
             - Write clean, maintainable, and scalable code.
             - Apply best practices for variable naming, formatting, and readability.
             - Collaborate effectively through code reviews.
-            """
-        )
+        """)
 
     with st.expander("Module 5: Visuals and User Interaction"):
-        st.write(
-            """
+        st.write("""
             - Build interactive web apps using Streamlit.
             - Learn how to create user-friendly interfaces.
             - Empower stakeholders to interact with outputs without coding.
-            """
-        )
-    for module, points in modules.items():
-        with st.expander(module):
-            st.markdown("- " + "\n- ".join(points))
+        """)
 
 # Pros & Cons Page
 elif choice == "⚖️ Pros & Cons":
@@ -134,6 +112,7 @@ elif choice == "⚖️ Pros & Cons":
         "Not tailored specifically for architects' workflows."
     ]
 
+    # Interactive sliders for each pro and con
     for i, pro in enumerate(pros):
         st.subheader(f"Pro {i + 1}:")
         st.write(pro)
@@ -163,43 +142,11 @@ elif choice == "🚀 Benefits for Architects":
         "Develop a unique skill set that sets you apart from peers."
     ]
 
+    # Visualize each benefit with a chart or graphic
     for benefit in benefits:
         if st.checkbox(benefit):
-            if benefit == "Automate repetitive tasks, saving time and effort.":
-                st.markdown("**Impact of Automation on Efficiency**")
-                data = pd.DataFrame({
-                    "Scenario": ["Manual Workflow", "Automated Workflow"],
-                    "Efficiency": [50, 85]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Efficiency (%)")
-                ax.set_title("Impact of Automation on Efficiency")
-                st.pyplot(fig)
-
-            elif benefit == "Analyze and manipulate data to inform design decisions.":
-                st.markdown("**Accuracy Increase with Data Analysis**")
-                labels = ["Traditional Analysis", "Data-Driven Analysis"]
-                sizes = [30, 70]
-                fig, ax = plt.subplots()
-                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
-                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-                ax.set_title("Accuracy Increase with Data Analysis")
-                st.pyplot(fig)
-
-            elif benefit == "Create custom tools for architectural workflows.":
-                st.markdown("**Adoption of Custom Tools Over Time**")
-                years = np.arange(2018, 2024)
-                adoption_rates = [30, 45, 60, 70, 80, 90]
-                fig, ax = plt.subplots()
-                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
-                ax.set_xlabel("Year")
-                ax.set_ylabel("Adoption Rate (%)")
-                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
-                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-                st.pyplot(fig)
-
-            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
+            # Add visualizations or graphics for each benefit
+            if benefit == "Stay ahead of the curve in a tech-driven industry.":
                 st.markdown("**Relevance Growth of Architects with Coding Skills**")
                 years = np.arange(2020, 2030)
                 relevance_coding = [50, 60, 70, 80, 90, 95, 97, 98, 99, 100]
@@ -214,35 +161,12 @@ elif choice == "🚀 Benefits for Architects":
                 ax.grid(True)
                 st.pyplot(fig)
 
-            elif benefit == "Open doors to specialized and well-paying job roles.":
-                st.markdown("**Salary Comparison**")
-                salary_data = pd.DataFrame({
-                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
-                    "Average Salary": [55000, 75000]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Average Salary (USD)")
-                ax.set_title("Salary Comparison")
-                st.pyplot(fig)
-
-            elif benefit == "Develop a unique skill set that sets you apart from peers.":
-                st.markdown("**Skill Set Distinction**")
-                skill_data = pd.DataFrame({
-                    "Skill Level": ["Standard", "Advanced"],
-                    "Distinction Score": [75, 95]
-                })
-                fig, ax = plt.subplots()
-                ax.bar(skill_data["Skill Level"], skill_data["Distinction Score"], color=[arcadis_orange, arcadis_black])
-                ax.set_ylabel("Distinction Score")
-                ax.set_title("Skill Set Distinction Levels")
-                st.pyplot(fig)
-
 # Coding Path Insights Page
 elif choice == "✅ Coding Path Insights":
     st.title("✅ Coding Path Insights")
     st.markdown("""
-        This section provides insights into the Coding Path program. Check the boxes that apply to your experience to evaluate the program’s relevance.
+        This section provides insights into the Coding Path program.
+        Check the boxes that apply to your experience to evaluate the program's relevance.
     """)
 
     insights = [
@@ -254,7 +178,7 @@ elif choice == "✅ Coding Path Insights":
         "Emphasizes collaboration using Git and GitHub.",
         "Lacks in-depth knowledge of advanced Python libraries (e.g., TensorFlow, PyTorch).",
         "Teaches best practices for coding workflows.",
-        "Doesn’t fully automate architectural workflows end-to-end.",
+        "Doesn't fully automate architectural workflows end-to-end.",
         "Offers insights into setting up virtual environments for projects.",
         "May not cover specific applications of coding for architectural analysis."
     ]
