@@ -23,7 +23,7 @@ pages = [
     "📚 Modules Breakdown",
     "⚖️ Pros & Cons",
     "🚀 Benefits for Architects",
-    "✅ Coding Path Insights"
+    "✅ Coding Path Insights",
     "🙏 Thank You"
 ]
 choice = st.sidebar.radio("Go to", pages)
@@ -43,7 +43,7 @@ if choice == "🏠 Overview":
 
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
-   # Ensure the image path is correct and consistent
+    # Ensure the image path is correct and consistent
     st.image("opening_image.jpg", caption="Uploaded Image", use_container_width=True)
     
 # Modules Breakdown Page
@@ -220,7 +220,6 @@ elif choice == "🚀 Benefits for Architects":
                 ax.set_title("Salary Comparison")
                 st.pyplot(fig)
 
-
 # Coding Path Insights Page
 elif choice == "✅ Coding Path Insights":
     st.title("✅ Coding Path Insights")
@@ -278,11 +277,10 @@ elif choice == "🙏 Thank You":
         """
     )
     st.image(
-       "coding_01.jpg", caption="Uploaded Image", use_container_width=True
+        "coding_01.jpg", caption="Uploaded Image", use_container_width=True
     )
-       )
     st.image(
-       "coding_02.jpg", caption="Uploaded Image", use_container_width=True
+        "coding_02.jpg", caption="Uploaded Image", use_container_width=True
     )
     
     st.markdown("---")
