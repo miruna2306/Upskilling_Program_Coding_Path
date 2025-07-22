@@ -130,6 +130,27 @@ st.write({
     "Limited integration with architectural design tools": con_5,
     "May require additional effort to apply coding to architecture": con_6,
     "Not tailored specifically for architects' workflows": con_7,
+})
+# Cons Section
+st.subheader("Disadvantages")
+st.write("Rate the following challenges from 1 (not a challenge) to 5 (significant challenge):")
+con_1 = st.slider("The learning curve may feel steep for beginners", 1, 5, 3)
+con_2 = st.slider("Some topics may not directly apply to daily architectural work", 1, 5, 3)
+con_3 = st.slider("Requires consistent practice to retain knowledge", 1, 5, 3)
+con_4 = st.slider("Focuses more on collaboration and environments than writing code", 1, 5, 3)
+con_5 = st.slider("Limited integration with architectural design tools", 1, 5, 3)
+con_6 = st.slider("May require additional effort to apply coding to architecture", 1, 5, 3)
+con_7 = st.slider("Not tailored specifically for architects' workflows", 1, 5, 3)
+
+st.write("Your challenge ratings:")
+st.write({
+    "The learning curve may feel steep for beginners": con_1,
+    "Some topics may not directly apply to daily architectural work": con_2,
+    "Requires consistent practice to retain knowledge": con_3,
+    "Focuses more on collaboration and environments than writing code": con_4,
+    "Limited integration with architectural design tools": con_5,
+    "May require additional effort to apply coding to architecture": con_6,
+    "Not tailored specifically for architects' workflows": con_7,
 
     # Interactive sliders for each pro and con
     for i, pro in enumerate(pros):
