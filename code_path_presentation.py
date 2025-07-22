@@ -221,11 +221,10 @@ elif choice == "✅ Coding Path Insights":
     """)
 
     insights = [
-        "Focuses the basics of code writing.",
-        "Emphasizes collaboration with other disciplines using Git and GitHub.", 
+        "Focuses on the basics of code writing.",
+        "Offers an understanding of virtual environments, essential for managing dependencies across projects.",
         "Covers integration with architectural design tools like Revit or Dynamo.",
         "The course introduces tools to enhance productivity by streamlining workflows and reducing repetition.",
-        "Offers an understanding of virtual environments, essential for managing dependencies across projects.",
         "Teaches how to leverage existing packages and libraries, optimizing development time and effort.",
         "Prepares you for collaborative coding environments, a critical skill in modern tech-driven fields.",
         "Doesn't fully automate architectural workflows end-to-end.",
