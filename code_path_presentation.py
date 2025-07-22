@@ -1,228 +1,185 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Title and Intro
-st.title("Citizen Development Coding Path: Upskilling Program")
-st.subheader("Accelerating Innovation Through Collaboration")
-st.write(
-    "Welcome to my interactive presentation! In this session, we’ll explore the modules, "
-    "skills, and applications of the Coding Path program, and how architects can leverage these "
-    "skills to enhance workflows."
+# Set Page Config
+st.set_page_config(
+    page_title="Coding Path for Architects",
+    page_icon="🏗️",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
+
+# Define Arcadis colors
+arcadis_orange = "#FF6600"
+arcadis_black = "#000000"
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
-section = st.sidebar.radio(
-    "Go to:",
-    ["Overview of the Coding Path", "Modules Breakdown", "Applications for Architects", "Pros & Cons", "Impact Charts", "Interactive Feedback", "Q&A"]
-)
+pages = [
+    "🏠 Intro",
+    "📚 Modules Overview",
+    "⚖️ Pros & Cons",
+    "🚀 Benefits for Architects",
+    "✅ Coding Path Insights"
+]
+choice = st.sidebar.radio("Go to", pages)
 
-# Section 1: Overview
-if section == "Overview of the Coding Path":
-    st.header("Overview of the Coding Path")
-    st.write(
-        """
-        The Coding Path is part of the Citizen Development Upskilling Program at Arcadis. 
-        It is designed to teach coding fundamentals, collaborative practices, and tools like GitHub, 
-        VSCode, and Streamlit. The focus is on enhancing workflows and driving digital innovation.
-        """
-    )
-
-# Section 2: Modules Breakdown
-elif section == "Modules Breakdown":
-    st.header("Modules Breakdown")
-    st.write(
-        "The program consists of five modules, each focusing on a specific aspect of coding and collaboration:"
-    )
-    
-    with st.expander("Module 1: Coding Fundamentals"):
-        st.write(
-            """
-            - Set up your coding environment (Python, VSCode, Git, GitHub).
-            - Learn the basics of coding and how tools interact.
-            - Gain foundational productivity skills for coding success.
-            """
-        )
+# Intro Page
+if choice == "🏠 Intro":
+    st.title("Coding Path for Architects")
+    st.subheader("Empowering Architects with Coding Skills")
+    st.markdown("""
+        Welcome to this interactive presentation! This app showcases the **Coding Path** from the Arcadis Upskilling Program.
         
-    with st.expander("Module 2: Version Control"):
-        st.write(
-            """
-            - Learn Git and GitHub to manage and collaborate on code.
-            - Understand branching, merging, and pull requests.
-            - Enhance teamwork and code tracking.
-            """
-        )
+        In this presentation, you'll learn:
+        - The structure and content of the program.
+        - Pros and cons of taking the course.
+        - Benefits of coding for architects.
+        - Insights into what the program covers and what it doesn’t.
 
-    with st.expander("Module 3: Packages and Environments"):
-        st.write(
-            """
-            - Explore Python packages to simplify workflows.
-            - Learn virtual environments for dependency management.
-            - Leverage reusable tools like Pandas and Matplotlib.
-            """
-        )
+        **Let’s dive in!** Use the sidebar to navigate through the chapters.
+    """)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Arcadis_Logo.svg/2560px-Arcadis_Logo.svg.png", width=400)
 
-    with st.expander("Module 4: Guidelines and Guardrails"):
-        st.write(
-            """
-            - Write clean, maintainable, and scalable code.
-            - Apply best practices for variable naming, formatting, and readability.
-            - Collaborate effectively through code reviews.
-            """
-        )
+# Modules Overview Page
+elif choice == "📚 Modules Overview":
+    st.title("📚 Modules Overview")
+    st.markdown("Here’s a breakdown of the modules covered in the Coding Path program:")
 
-    with st.expander("Module 5: Visuals and User Interaction"):
-        st.write(
-            """
-            - Build interactive web apps using Streamlit.
-            - Learn how to create user-friendly interfaces.
-            - Empower stakeholders to interact with outputs without coding.
-            """
-        )
+    modules = {
+        "Module 1: Introduction to Programming": [
+            "Learn the basics of Python.",
+            "Understand variables, loops, and functions.",
+            "Introduction to coding platforms like VS Code."
+        ],
+        "Module 2: Data Handling": [
+            "Work with data structures like lists, dictionaries, and dataframes.",
+            "Introduction to libraries like Pandas and Numpy.",
+            "Learn how to clean and manipulate data."
+        ],
+        "Module 3: Visualization": [
+            "Create charts and graphs using Matplotlib.",
+            "Understand how to present data visually.",
+            "Learn the principles of effective data storytelling."
+        ],
+        "Module 4: Collaboration & Environments": [
+            "Work with Git and GitHub for version control.",
+            "Understand virtual environments and package management.",
+            "Collaborate effectively on coding projects."
+        ]
+    }
 
-# Section 3: Applications for Architects
-elif section == "Applications for Architects":
-    st.header("Applications for Architects")
-    st.write(
-        """
-        Here’s how architects can apply the skills learned in the Coding Path program:
-        """
-    )
-    
-    st.markdown(
-        """
-        **1. Automating Repetitive Tasks**  
-        Use Python scripts to automate tasks like data extraction, reporting, and parameter updates in BIM workflows.
-        
-        **2. Enhancing Collaboration**  
-        Leverage GitHub for version control and team collaboration to manage and share project scripts.
-        
-        **3. Building Custom Tools**  
-        Develop plugins or scripts for Revit, Dynamo, or other BIM tools to solve project-specific challenges.
-        
-        **4. Data Analysis and Visualization**  
-        Process and analyze large datasets from BIM models to inform design decisions and optimize workflows.
-        
-        **5. Interactive Dashboards**  
-        Use Streamlit to present project data in an interactive format for stakeholders.
-        """
-    )
-    
-    st.image("https://via.placeholder.com/800x400", caption="Example of Streamlit Dashboard")  # Replace with actual image
+    for module, points in modules.items():
+        with st.expander(module):
+            st.markdown("- " + "\n- ".join(points))
 
-# Section 4: Pros & Cons
-elif section == "Pros & Cons":
-    st.header("Pros & Cons of Following the Coding Path as an Architect")
-    st.write(
-        "Explore the advantages and disadvantages of following the program, especially as a beginner in coding."
-    )
-    
-    # Pros Section
-    st.subheader("Advantages")
-    st.write("Check the benefits that resonate with you:")
-    pro_1 = st.checkbox("Enhanced skill set and future-proofing")
-    pro_2 = st.checkbox("Increased efficiency through automation")
-    pro_3 = st.checkbox("Improved collaboration within multidisciplinary teams")
-    pro_4 = st.checkbox("Ability to create custom tools tailored to project needs")
-    pro_5 = st.checkbox("Professional growth and alignment with digital transformation initiatives")
-    
-    st.write("Selected advantages:")
-    selected_pros = [pro for pro, checked in zip(
-        ["Enhanced skill set and future-proofing", 
-         "Increased efficiency through automation", 
-         "Improved collaboration within multidisciplinary teams", 
-         "Ability to create custom tools tailored to project needs", 
-         "Professional growth and alignment with digital transformation initiatives"], 
-        [pro_1, pro_2, pro_3, pro_4, pro_5]
-    ) if checked]
-    st.write(selected_pros)
-    
-    # Cons Section
-    st.subheader("Disadvantages")
-    st.write("Rate the following challenges from 1 (not a challenge) to 5 (significant challenge):")
-    con_1 = st.slider("Steep learning curve for beginners", 1, 5, 3)
-    con_2 = st.slider("Time investment needed to balance learning with work", 1, 5, 3)
-    con_3 = st.slider("Complexity of tools like Git and GitHub for novices", 1, 5, 3)
-    con_4 = st.slider("Abstract nature of best practices for small-scale tasks", 1, 5, 3)
-    con_5 = st.slider("Initial productivity dip during the learning phase", 1, 5, 3)
-    
-    st.write("Your challenge ratings:")
-    st.write({
-        "Steep learning curve for beginners": con_1,
-        "Time investment needed to balance learning with work": con_2,
-        "Complexity of tools like Git and GitHub for novices": con_3,
-        "Abstract nature of best practices for small-scale tasks": con_4,
-        "Initial productivity dip during the learning phase": con_5,
-    })
+# Pros & Cons Page
+elif choice == "⚖️ Pros & Cons":
+    st.title("⚖️ Pros & Cons")
+    st.markdown("Below are the pros and cons of the Coding Path program:")
 
-# Section 5: Impact Charts
-elif section == "Impact Charts":
-    st.header("Impact of Coding Skills on Architectural Work")
-    
-    # Chart 1: Efficiency Increase
-    st.subheader("Efficiency Increase in BIM Projects with Automation")
-    efficiency_data = pd.DataFrame({
-        'Project Type': ['Without Automation', 'With Automation'],
-        'Efficiency (%)': [70, 90]
-    })
-    fig1, ax1 = plt.subplots()
-    ax1.bar(efficiency_data['Project Type'], efficiency_data['Efficiency (%)'], color=['red', 'green'])
-    ax1.set_ylabel('Efficiency (%)')
-    ax1.set_title('Efficiency in BIM Projects')
-    st.pyplot(fig1)
-    
-    # Chart 2: Earnings Comparison
-    st.subheader("Earnings Comparison: Architects with vs. without Coding Skills")
-    earnings_data = pd.DataFrame({
-        'Category': ['Without Coding Skills', 'With Coding Skills'],
-        'Average Salary (USD)': [60000, 80000]
-    })
-    fig2, ax2 = plt.subplots()
-    ax2.bar(earnings_data['Category'], earnings_data['Average Salary (USD)'], color=['blue', 'orange'])
-    ax2.set_ylabel('Average Salary (USD)')
-    ax2.set_title('Earnings of Architects')
-    st.pyplot(fig2)
-    
-    # Chart 3: Job Opportunities
-    st.subheader("Ease of Finding Specialized Jobs")
-    job_data = pd.DataFrame({
-        'Skill Level': ['Non-coding Architects', 'Coding Architects'],
-        'Job Opportunities': [50, 80]
-    })
-    fig3, ax3 = plt.subplots()
-    ax3.bar(job_data['Skill Level'], job_data['Job Opportunities'], color=['purple', 'cyan'])
-    ax3.set_ylabel('Job Opportunities')
-    ax3.set_title('Specialized Job Market')
-    st.pyplot(fig3)
+    st.subheader("Pros")
+    pros = [
+        "Gain foundational knowledge of Python and coding.",
+        "Learn how to manipulate and visualize data effectively.",
+        "Develop skills in collaboration and version control.",
+        "Understand virtual environments for better coding practices.",
+        "Open new career opportunities with coding skills.",
+        "Enhance your problem-solving and logical thinking.",
+        "Experience an interactive and hands-on learning approach."
+    ]
+    st.slider("Scroll through the pros:", 0, len(pros)-1, 0, key="pros_slider")
+    st.write(pros[st.session_state.pros_slider])
 
-# Section 6: Interactive Feedback
-elif section == "Interactive Feedback":
-    st.header("Interactive Feedback Section")
-    
-    st.write("Please rate your overall experience with this presentation:")
-    
-    # Create a slider for user feedback
-    feedback_score = st.slider("Rate your experience", 0, 10, 5)
-    st.write(f"Your feedback score: {feedback_score}")
-    
-    # Collecting feedback data
-    feedback_data = pd.DataFrame({
-        'Feedback Score': [feedback_score]
-    })
-    st.write(feedback_data)
+    st.subheader("Cons")
+    cons = [
+        "The learning curve may feel steep for beginners.",
+        "Some topics may not directly apply to daily architectural work.",
+        "Requires consistent practice to retain knowledge.",
+        "Focuses more on collaboration and environments than writing code.",
+        "Limited integration with architectural design tools.",
+        "May require additional effort to apply coding to architecture.",
+        "Not tailored specifically for architects' workflows."
+    ]
+    st.slider("Scroll through the cons:", 0, len(cons)-1, 0, key="cons_slider")
+    st.write(cons[st.session_state.cons_slider])
 
-    # Display a thank you message
-    if st.button("Submit Feedback"):
-        st.write("Thank you for your feedback!")
+# Benefits for Architects Page
+elif choice == "🚀 Benefits for Architects":
+    st.title("🚀 Benefits of Coding for Architects")
+    st.markdown("Learning to code can have a significant impact on an architect's career and work efficiency.")
 
-# Section 7: Q&A
-elif section == "Q&A":
-    st.header("Q&A")
-    st.write("If you have any questions, feel free to ask during the session!")
-    st.write("You can also provide feedback or share your thoughts below.")
-    
-    feedback = st.text_area("Your Feedback or Questions:")
-    if st.button("Submit"):
-        st.write("Thank you for your feedback!")
+    benefits = [
+        "Automate repetitive tasks, saving time and effort.",
+        "Analyze and manipulate data to inform design decisions.",
+        "Create custom tools for architectural workflows.",
+        "Open doors to specialized and well-paying job roles.",
+        "Improve project efficiency and collaboration with other disciplines.",
+        "Stay ahead of the curve in a tech-driven industry.",
+        "Develop a unique skill set that sets you apart from peers."
+    ]
+
+    benefit_interactivity = {
+        "Automate repetitive tasks, saving time and effort.": "See how automation impacts efficiency:",
+        "Analyze and manipulate data to inform design decisions.": "Explore data insights:",
+        "Create custom tools for architectural workflows.": "Tool customization potential:",
+        "Open doors to specialized and well-paying job roles.": "Career potential graph:",
+        "Improve project efficiency and collaboration with other disciplines.": "Collaboration benefits:",
+        "Stay ahead of the curve in a tech-driven industry.": "Industry trends:",
+        "Develop a unique skill set that sets you apart from peers.": "Skill set comparison:"
+    }
+
+    for benefit, description in benefit_interactivity.items():
+        if st.checkbox(benefit):
+            st.markdown(description)
+            if benefit == "Automate repetitive tasks, saving time and effort.":
+                st.markdown("**Project Efficiency Before and After Automation**")
+                data = pd.DataFrame({
+                    "Scenario": ["Manual Workflow", "Automated Workflow"],
+                    "Efficiency": [50, 85]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Efficiency (%)")
+                ax.set_title("Impact of Automation on Efficiency")
+                st.pyplot(fig)
+            elif benefit == "Open doors to specialized and well-paying job roles.":
+                st.markdown("**Salary Comparison**")
+                salary_data = pd.DataFrame({
+                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
+                    "Average Salary": [55000, 75000]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Average Salary (USD)")
+                ax.set_title("Salary Comparison")
+                st.pyplot(fig)
+            # Add additional interactive elements for other benefits as needed.
+
+    st.markdown("**Sources:** Data based on industry reports and surveys.")
+
+# New Section: Coding Path Insights
+elif choice == "✅ Coding Path Insights":
+    st.title("✅ Coding Path Insights")
+    st.markdown("""
+        This section provides a mixed set of statements about what the Coding Path program covers and what it may not. 
+        Use the checkboxes to indicate your agreement or disagreement based on your experience.
+    """)
+
+    insights = [
+        "Teaches the basics of Python programming.",
+        "Covers integration with architectural design tools like Revit or AutoCAD.",
+        "Focuses on data cleaning and manipulation with Pandas.",
+        "Introduces creating parametric models using coding.",
+        "Demonstrates creating visualizations using Matplotlib.",
+        "Emphasizes collaboration using Git and GitHub.",
+        "Lacks in-depth knowledge of advanced Python libraries (e.g., TensorFlow, PyTorch).",
+        "Teaches best practices for coding workflows.",
+        "Doesn't fully automate architectural workflows end-to-end.",
+        "Offers insights into setting up virtual environments for projects.",
+        "May not cover specific applications of coding for architectural analysis."
+    ]
+    for point in insights:
+        st.checkbox(point, key=f"insight_{point}")
