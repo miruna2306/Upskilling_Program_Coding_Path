@@ -19,21 +19,28 @@ arcadis_black = "#000000"
 # Sidebar Navigation
 st.sidebar.title("Navigation")
 pages = [
-    "🏠 Intro",
-    "📚 Modules Overview",
+    "🏠 Overview",
+    "📚 Modules Breakdown",
     "⚖️ Pros & Cons",
     "🚀 Benefits for Architects",
     "✅ Coding Path Insights"
 ]
 choice = st.sidebar.radio("Go to", pages)
 
-# Intro Page
-if choice == "🏠 Intro":
-    st.title("Coding Path for Architects")
-    st.subheader("Empowering Architects with Coding Skills")
+# Overview Page
+if choice == "🏠 Overview":
+    st.title("Citizen Development Code Path: Upskilling Program")
+    st.subheader("Accelerating Innovation Through Collaboration")
     st.markdown("""
-        Welcome to this interactive presentation! This app showcases the **Coding Path** from the Arcadis Upskilling Program.
+           "Welcome to my interactive presentation! In this session, we’ll explore the modules, "
+    "skills, and applications of the Coding Path program, and how architects can leverage these "
+    "skills to enhance workflows."
 
+        """
+        The Coding Path is part of the Citizen Development Upskilling Program at Arcadis. 
+        It is designed to teach coding fundamentals, collaborative practices, and tools like GitHub, 
+        VSCode, and Streamlit. The focus is on enhancing workflows and driving digital innovation.
+        """
         In this presentation, you’ll learn:
         - The structure and content of the program.
         - Pros and cons of taking the course.
@@ -47,7 +54,7 @@ if choice == "🏠 Intro":
         width=400
     )
 
-# Modules Overview Page
+# Modules Breakdown Page
 elif section == "Modules Breakdown":
     st.header("Modules Breakdown")
     st.write(
