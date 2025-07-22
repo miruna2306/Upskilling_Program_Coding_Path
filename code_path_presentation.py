@@ -42,10 +42,7 @@ if choice == "🏠 Overview":
 
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
-    st.image(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Arcadis_Logo.svg/2560px-Arcadis_Logo.svg.png",
-        width=400
-    )
+   st.image("opening_image.jpg", caption="Uploaded Image", use_column_width=True)
 
 # Modules Breakdown Page
 elif choice == "📚 Modules Breakdown":
