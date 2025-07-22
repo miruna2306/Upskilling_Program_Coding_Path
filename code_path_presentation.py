@@ -150,30 +150,92 @@ elif choice == "🚀 Benefits for Architects":
 
     for benefit in benefits:
         if st.checkbox(benefit):
-            st.markdown(f"**Visualizing the impact of: {benefit}**")
-            # Example data visualization can be added here for each benefit
-            st.write("Example visualization placeholder...")
+            if benefit == "Automate repetitive tasks, saving time and effort.":
+                st.markdown("**Impact of Automation on Efficiency**")
+                data = pd.DataFrame({
+                    "Scenario": ["Manual Workflow", "Automated Workflow"],
+                    "Efficiency": [50, 85]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(data["Scenario"], data["Efficiency"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Efficiency (%)")
+                ax.set_title("Impact of Automation on Efficiency")
+                st.pyplot(fig)
+
+            elif benefit == "Analyze and manipulate data to inform design decisions.":
+                st.markdown("**Accuracy Increase with Data Analysis**")
+                labels = ["Traditional Analysis", "Data-Driven Analysis"]
+                sizes = [30, 70]
+                fig, ax = plt.subplots()
+                ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=[arcadis_black, arcadis_orange])
+                ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+                ax.set_title("Accuracy Increase with Data Analysis")
+                st.pyplot(fig)
+
+            elif benefit == "Create custom tools for architectural workflows.":
+                st.markdown("**Adoption of Custom Tools Over Time**")
+                years = np.arange(2018, 2024)
+                adoption_rates = [30, 45, 60, 70, 80, 90]
+                fig, ax = plt.subplots()
+                ax.plot(years, adoption_rates, marker='o', color=arcadis_orange)
+                ax.set_xlabel("Year")
+                ax.set_ylabel("Adoption Rate (%)")
+                ax.set_title("Growth in Custom Tool Adoption in Architectural Projects")
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+                st.pyplot(fig)
+
+            elif benefit == "Stay ahead of the curve in a tech-driven industry.":
+                st.markdown("**Relevance Growth of Architects with Coding Skills**")
+                years = np.arange(2020, 2030)
+                relevance_coding = [50, 60, 70, 80, 90, 95, 97, 98, 99, 100]
+                relevance_bim = [50, 55, 60, 62, 63, 64, 64, 64, 64, 64]
+                fig, ax = plt.subplots()
+                ax.plot(years, relevance_coding, label="Architects with Coding Skills", color=arcadis_orange, marker='o')
+                ax.plot(years, relevance_bim, label="Architects with Basic BIM Skills", color=arcadis_black, marker='x')
+                ax.set_xlabel("Year")
+                ax.set_ylabel("Relevance in Tech-Driven Industry (%)")
+                ax.set_title("Relevance Growth: Coding Skills vs. Basic BIM Skills")
+                ax.legend()
+                ax.grid(True)
+                st.pyplot(fig)
+
+            elif benefit == "Open doors to specialized and well-paying job roles.":
+                st.markdown("**Salary Comparison**")
+                salary_data = pd.DataFrame({
+                    "Role": ["Architect (No Coding Skills)", "Architect (With Coding Skills)"],
+                    "Average Salary": [55000, 75000]
+                })
+                fig, ax = plt.subplots()
+                ax.bar(salary_data["Role"], salary_data["Average Salary"], color=[arcadis_orange, arcadis_black])
+                ax.set_ylabel("Average Salary (USD)")
+                ax.set_title("Salary Comparison")
+                st.pyplot(fig)
+
 
 # Coding Path Insights Page
 elif choice == "✅ Coding Path Insights":
     st.title("✅ Coding Path Insights")
     st.markdown("""
         This section provides insights into the Coding Path program.
-        Check the boxes that apply to your experience to evaluate the program's relevance.
+        Check the boxes that apply to your experience to evaluate the program's relevance for an architect that wants to master coding skills.
     """)
 
     insights = [
-        "Teaches the basics of Python programming.",
-        "Covers integration with architectural design tools like Revit or AutoCAD.",
-        "Focuses on data cleaning and manipulation with Pandas.",
-        "Introduces creating parametric models using coding.",
-        "Demonstrates creating visualizations using Matplotlib.",
-        "Emphasizes collaboration using Git and GitHub.",
-        "Lacks in-depth knowledge of advanced Python libraries (e.g., TensorFlow, PyTorch).",
-        "Teaches best practices for coding workflows.",
+        "Focuses the basics of code writing.",
+        "Emphasizes collaboration with other disciplines using Git and GitHub.", 
+        "Covers integration with architectural design tools like Revit or Dynamo.",
+        "The course introduces tools to enhance productivity by streamlining workflows and reducing repetition.",
+        "Offers an understanding of virtual environments, essential for managing dependencies across projects.",
+        "Teaches how to leverage existing packages and libraries, optimizing development time and effort.",
+        "Prepares you for collaborative coding environments, a critical skill in modern tech-driven fields.",
         "Doesn't fully automate architectural workflows end-to-end.",
+        "Emphasizes version control, which is crucial for collaborative work and maintaining project history.",
+        "Teaches best practices for coding workflows.",
         "Offers insights into setting up virtual environments for projects.",
-        "May not cover specific applications of coding for architectural analysis."
+        "Covers specific applications of coding for architectural analysis.",
+        "Highlights the importance of clean code, improving readability and facilitating easier knowledge transfer.",
+        "Focus on 3D modeling and simulation techniques specific to architectural design.",
+        "Equips you with the skills to develop user-friendly web applications, promoting accessibility and stakeholder interaction."
     ]
 
     checkbox_states = {}
@@ -186,8 +248,8 @@ elif choice == "✅ Coding Path Insights":
 
     st.markdown(f"### Final Relevance Score: {score}%")
     if score >= 75:
-        st.success("The Coding Path program is highly relevant to your needs!")
+        st.success("The Coding Path program is highly relevant to an architect with minimal coding knowledge!")
     elif score >= 50:
         st.warning("The Coding Path program is somewhat relevant, but it has room for improvement.")
     else:
-        st.error("The Coding Path program may not meet your needs. Consider additional learning resources.")
+        st.error("The Coding Path program may not meet the needs for an architect with minimal coding knowledge. Consider additional learning resources.")
