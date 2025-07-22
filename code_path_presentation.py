@@ -42,8 +42,9 @@ if choice == "🏠 Overview":
 
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
-   st.image("opening_image.jpg", caption="Uploaded Image", use_column_width=True)
-
+   # Ensure the image path is correct and consistent
+    st.image("images/opening_image.jpg", caption="Uploaded Image", use_column_width=True)
+    
 # Modules Breakdown Page
 elif choice == "📚 Modules Breakdown":
     st.header("Modules Breakdown")
