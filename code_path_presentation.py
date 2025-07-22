@@ -200,7 +200,13 @@ elif choice == "🚀 Benefits for Architects":
                 st.pyplot(fig)
             elif benefit == "Stay ahead of the curve in a tech-driven industry.":
                 st.markdown("**Industry Competitiveness**")
-                st.markdown("Imagine a graphic here illustrating how tech skills make architects more relevant. For example, a graphic showing an architect upgrading from basic BIM skills to advanced tech skills, showcasing tools like VR/AR, generative design, and data analytics.")
+                # Visualization with text-based graphic
+                st.markdown("""
+                    <div style='text-align: center;'>
+                        <img src='https://via.placeholder.com/300x150.png?text=Tech-Savvy+Architects+Lead+the+Future' alt='Graphic: Tech-Savvy Architects Lead the Future'>
+                        <p>Architects with <strong>advanced coding skills</strong> <span style='font-size: 24px;'>🔗</span> are more relevant in today's tech-driven industry compared to those with only basic BIM skills.</p>
+                    </div>
+                """, unsafe_allow_html=True)
             elif benefit == "Develop a unique skill set that sets you apart from peers.":
                 st.markdown("**Skill Set Distinction**")
                 skill_data = pd.DataFrame({
