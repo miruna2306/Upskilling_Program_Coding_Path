@@ -88,29 +88,48 @@ elif choice == "📚 Modules Breakdown":
         """)
 
 # Pros & Cons Page
-elif choice == "⚖️ Pros & Cons":
-    st.title("⚖️ Pros & Cons")
-    st.markdown("Below are the pros and cons of the Coding Path program:")
+# Pros Section
+st.subheader("Advantages")
+st.write("Rate the following benefits from 1 (not beneficial) to 5 (very beneficial):")
+pro_1 = st.slider("Gain foundational knowledge of Python and coding", 1, 5, 3)
+pro_2 = st.slider("Learn how to manipulate and visualize data effectively", 1, 5, 3)
+pro_3 = st.slider("Develop skills in collaboration and version control", 1, 5, 3)
+pro_4 = st.slider("Understand virtual environments for better coding practices", 1, 5, 3)
+pro_5 = st.slider("Open new career opportunities with coding skills", 1, 5, 3)
+pro_6 = st.slider("Enhance your problem-solving and logical thinking", 1, 5, 3)
+pro_7 = st.slider("Experience an interactive and hands-on learning approach", 1, 5, 3)
 
-    pros = [
-        "Gain foundational knowledge of Python and coding.",
-        "Learn how to manipulate and visualize data effectively.",
-        "Develop skills in collaboration and version control.",
-        "Understand virtual environments for better coding practices.",
-        "Open new career opportunities with coding skills.",
-        "Enhance your problem-solving and logical thinking.",
-        "Experience an interactive and hands-on learning approach."
-    ]
+st.write("Your benefit ratings:")
+st.write({
+    "Gain foundational knowledge of Python and coding": pro_1,
+    "Learn how to manipulate and visualize data effectively": pro_2,
+    "Develop skills in collaboration and version control": pro_3,
+    "Understand virtual environments for better coding practices": pro_4,
+    "Open new career opportunities with coding skills": pro_5,
+    "Enhance your problem-solving and logical thinking": pro_6,
+    "Experience an interactive and hands-on learning approach": pro_7,
+})
 
-    cons = [
-        "The learning curve may feel steep for beginners.",
-        "Some topics may not directly apply to daily architectural work.",
-        "Requires consistent practice to retain knowledge.",
-        "Focuses more on collaboration and environments than writing code.",
-        "Limited integration with architectural design tools.",
-        "May require additional effort to apply coding to architecture.",
-        "Not tailored specifically for architects' workflows."
-    ]
+# Cons Section
+st.subheader("Disadvantages")
+st.write("Rate the following challenges from 1 (not a challenge) to 5 (significant challenge):")
+con_1 = st.slider("The learning curve may feel steep for beginners", 1, 5, 3)
+con_2 = st.slider("Some topics may not directly apply to daily architectural work", 1, 5, 3)
+con_3 = st.slider("Requires consistent practice to retain knowledge", 1, 5, 3)
+con_4 = st.slider("Focuses more on collaboration and environments than writing code", 1, 5, 3)
+con_5 = st.slider("Limited integration with architectural design tools", 1, 5, 3)
+con_6 = st.slider("May require additional effort to apply coding to architecture", 1, 5, 3)
+con_7 = st.slider("Not tailored specifically for architects' workflows", 1, 5, 3)
+
+st.write("Your challenge ratings:")
+st.write({
+    "The learning curve may feel steep for beginners": con_1,
+    "Some topics may not directly apply to daily architectural work": con_2,
+    "Requires consistent practice to retain knowledge": con_3,
+    "Focuses more on collaboration and environments than writing code": con_4,
+    "Limited integration with architectural design tools": con_5,
+    "May require additional effort to apply coding to architecture": con_6,
+    "Not tailored specifically for architects' workflows": con_7,
 
     # Interactive sliders for each pro and con
     for i, pro in enumerate(pros):
