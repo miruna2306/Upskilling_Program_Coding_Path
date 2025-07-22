@@ -44,7 +44,7 @@ if choice == "🏠 Overview":
         **Let’s dive in!** Use the sidebar to navigate through the chapters.
     """)
     # Ensure the image path is correct and consistent
-    st.image("opening_image.jpg", caption="Uploaded Image", use_container_width=True)
+    st.image("opening_image.jpg", caption="Mastering code is more and more important in a tech-driven world", use_container_width=True)
     
 # Modules Breakdown Page
 elif choice == "📚 Modules Breakdown":
@@ -277,10 +277,10 @@ elif choice == "🙏 Thank You":
         """
     )
     st.image(
-        "coding_01.jpg", caption="Uploaded Image", use_container_width=True
+        "coding_01.jpg", caption="Frangment of the code behind this web app", use_container_width=True
     )
     st.image(
-        "coding_02.jpg", caption="Uploaded Image", use_container_width=True
+        "coding_02.jpg", caption="Frangment of the code behind this web app", use_container_width=True
     )
     
     st.markdown("---")
